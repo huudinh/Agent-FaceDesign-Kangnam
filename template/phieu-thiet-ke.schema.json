@@ -1,0 +1,167 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Phiếu thiết kế mô phỏng thẩm mỹ — Agent-FaceDesign-Kangnam",
+  "description": "Mỗi lần thiết kế sinh một phiếu. Phiếu là đơn vị quản trị, kiểm duyệt và bàn giao. KHÔNG ghi tên thật, số điện thoại, CCCD, số bảo hiểm hay bệnh án vào phiếu.",
+  "type": "object",
+  "required": [
+    "ma_phieu",
+    "ngay",
+    "ma_khach",
+    "nhom_dich_vu",
+    "dich_vu",
+    "muc_tieu",
+    "muc_do",
+    "phong_cach",
+    "vung_mo",
+    "vung_khoa",
+    "anh_dau_vao",
+    "dong_y",
+    "nguoi_lap"
+  ],
+  "properties": {
+    "ma_phieu": {
+      "type": "string",
+      "pattern": "^FD-[0-9]{4}-[0-9]{4}-[A-Za-z0-9]+-v[0-9]+$",
+      "description": "FD-<yyyy>-<mmdd>-<ma_khach>-v<phiên bản>",
+      "examples": ["FD-2026-1023-KH0417-v1"]
+    },
+    "ngay": { "type": "string", "format": "date" },
+    "ma_khach": {
+      "type": "string",
+      "description": "ID nội bộ. ⛔ Không dùng tên thật."
+    },
+    "nhom_dich_vu": {
+      "type": "string",
+      "enum": ["Hàm mặt", "Nâng mũi", "Cắt mí"]
+    },
+    "dich_vu": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": ["Gọt hàm", "Hạ gò má", "Trượt cằm", "Nâng mũi", "Cắt mí"]
+      },
+      "description": "Nhiều phần tử = ca kết hợp. Ca kết hợp phải trả lời được 5 câu ở FD-05 mục 4 trước khi phát hành."
+    },
+    "muc_tieu": {
+      "type": "string",
+      "description": "Bằng CHỮ CỦA KHÁCH, không diễn giải lại thành thuật ngữ chuyên môn."
+    },
+    "muc_do": {
+      "type": "string",
+      "enum": ["M1", "M2", "M3"],
+      "default": "M1",
+      "description": "M1 nhẹ (mặc định mọi ca) · M2 vừa · M3 rõ nét. M2/M3 chỉ sau khi khách xem M1 và xác nhận."
+    },
+    "phong_cach": {
+      "type": "string",
+      "enum": ["Tự nhiên", "Thanh thoát", "Rõ nét", "Cân đối hai bên"],
+      "default": "Tự nhiên"
+    },
+    "vung_mo": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "Copy từ bảng vùng mở của module (FD-05/06/07). Đây là allow-list: ngoài danh sách này là vùng khoá."
+    },
+    "vung_khoa": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "Copy từ bảng vùng khoá của module, cộng các nét riêng khách yêu cầu giữ."
+    },
+    "giu_nguyen": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Nét riêng khách nói rõ muốn giữ: nốt ruồi, dáng mắt, độ rộng mặt…"
+    },
+    "anh_dau_vao": {
+      "type": "object",
+      "required": ["goc_0", "goc_45", "goc_90"],
+      "properties": {
+        "goc_0": { "type": ["string", "null"], "description": "Đường dẫn ảnh chính diện, null nếu thiếu" },
+        "goc_45": { "type": ["string", "null"] },
+        "goc_90": { "type": ["string", "null"] }
+      }
+    },
+    "cong_a": {
+      "type": "object",
+      "description": "Kết quả 7 ô cổng A. Phải có đủ 7 khoá, giá trị true = ĐẠT.",
+      "properties": {
+        "A1_du_3_goc": { "type": "boolean" },
+        "A2_cung_mot_khach": { "type": "boolean" },
+        "A3_vung_khong_bi_che": { "type": "boolean" },
+        "A4_khong_filter": { "type": "boolean" },
+        "A5_tu_the_dat": { "type": "boolean" },
+        "A6_du_net": { "type": "boolean" },
+        "A7_da_dong_y": { "type": "boolean" }
+      }
+    },
+    "phan_tich": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["goc", "vung", "quan_sat", "gia_thuyet", "can_bac_si"],
+        "properties": {
+          "goc": { "type": "string", "enum": ["0", "45", "90"] },
+          "vung": { "type": "string" },
+          "quan_sat": { "type": "string", "description": "Chỉ tả cái thấy trên ảnh" },
+          "gia_thuyet": { "type": "string", "description": "Đề xuất ở thể thử, không phải chỉ định" },
+          "can_bac_si": { "type": "boolean" }
+        }
+      }
+    },
+    "so_phuong_an": { "type": "integer", "minimum": 1, "default": 1 },
+    "tien_su": {
+      "type": "string",
+      "description": "Khách tự nguyện cung cấp. Chỉ là ngữ cảnh cho bác sĩ. ⛔ AI không dùng để kết luận y khoa."
+    },
+    "gioi_han_mo_phong": {
+      "type": "string",
+      "description": "BẮT BUỘC khai khi thiếu góc ảnh hoặc chỉ làm được bản thử nghiệm giới hạn."
+    },
+    "dong_y": {
+      "type": "boolean",
+      "description": "Khách đã đồng ý xử lý ảnh cho mục đích đã thông báo. ⛔ false → không tạo ảnh, không ngoại lệ."
+    },
+    "dong_y_dang_tai": {
+      "type": "boolean",
+      "default": false,
+      "description": "Đồng ý RIÊNG cho việc đăng/quảng cáo/huấn luyện. Đồng ý mô phỏng ≠ đồng ý đăng."
+    },
+    "anh_dau_ra": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["loai", "goc", "duong_dan", "co_nhan"],
+        "properties": {
+          "loai": { "type": "string", "enum": ["goc", "mo_phong", "so_sanh"] },
+          "goc": { "type": "string", "enum": ["0", "45", "90"] },
+          "duong_dan": { "type": "string" },
+          "co_nhan": { "type": "boolean", "description": "Nhãn mô phỏng đã in TRÊN ảnh" }
+        }
+      }
+    },
+    "cong_b": {
+      "type": "object",
+      "required": ["trang_thai"],
+      "properties": {
+        "trang_thai": { "type": "string", "enum": ["DAT", "TRUOT", "CHUA_RA"] },
+        "o_truot": {
+          "type": "array",
+          "items": { "type": "string" },
+          "examples": [["C4", "D3"]]
+        },
+        "ma_loi": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["E01", "E02", "E03", "E04", "E05", "E06", "E07", "E08"] }
+        },
+        "ghi_chu_truot": { "type": "string", "description": "Nhìn thấy GÌ trên ảnh. ⛔ Không ghi 'chưa tự nhiên'." },
+        "nguoi_kiem_duyet": { "type": "string" }
+      }
+    },
+    "ghi_chu_bac_si": { "type": "string" },
+    "nguoi_lap": { "type": "string" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,80 @@
+{
+  "ma_phieu": "FD-2026-1023-KH0417-v1",
+  "ngay": "2026-10-23",
+  "ma_khach": "KH0417",
+  "nhom_dich_vu": "Hàm mặt",
+  "dich_vu": ["Gọt hàm"],
+  "muc_tieu": "muốn mặt nhìn thon hơn ở phần góc hàm, nhưng vẫn giữ nét mặt hiện tại",
+  "muc_do": "M1",
+  "phong_cach": "Tự nhiên",
+  "vung_mo": [
+    "Đường viền góc hàm",
+    "Bờ dưới hàm",
+    "Chuyển tiếp góc hàm → cằm"
+  ],
+  "vung_khoa": [
+    "Cằm (hình dáng, chiều dài, độ nhọn)",
+    "Gò má",
+    "Thái dương · trán · má trên",
+    "Mắt · mũi · môi · tai · chân tóc"
+  ],
+  "giu_nguyen": [
+    "Nốt ruồi bên má phải",
+    "Dáng mắt hiện tại"
+  ],
+  "anh_dau_vao": {
+    "goc_0": "in/KH0417-0.jpg",
+    "goc_45": "in/KH0417-45.jpg",
+    "goc_90": "in/KH0417-90.jpg"
+  },
+  "cong_a": {
+    "A1_du_3_goc": true,
+    "A2_cung_mot_khach": true,
+    "A3_vung_khong_bi_che": true,
+    "A4_khong_filter": true,
+    "A5_tu_the_dat": true,
+    "A6_du_net": true,
+    "A7_da_dong_y": true
+  },
+  "phan_tich": [
+    {
+      "goc": "0",
+      "vung": "góc hàm",
+      "quan_sat": "Đường viền hai bên rộng hơn ở vùng góc hàm, hai bên tương đối đều",
+      "gia_thuyet": "Có thể thử mô phỏng đường viền mềm hơn ở mức M1",
+      "can_bac_si": true
+    },
+    {
+      "goc": "45",
+      "vung": "chuyển tiếp má – góc hàm",
+      "quan_sat": "Chuyển tiếp từ má xuống góc hàm khá rõ nét",
+      "gia_thuyet": "Làm mềm đoạn chuyển tiếp này có thể là cái khách đang muốn khi nói 'thon hơn'",
+      "can_bac_si": false
+    },
+    {
+      "goc": "90",
+      "vung": "bờ dưới hàm",
+      "quan_sat": "Bờ dưới hàm liên tục, chuyển về cằm không gấp khúc",
+      "gia_thuyet": "Không cần can thiệp vùng cằm — giữ nguyên theo yêu cầu của khách",
+      "can_bac_si": false
+    }
+  ],
+  "so_phuong_an": 1,
+  "tien_su": "Khách cho biết chưa từng can thiệp vùng hàm mặt",
+  "dong_y": true,
+  "dong_y_dang_tai": false,
+  "anh_dau_ra": [
+    { "loai": "goc", "goc": "0", "duong_dan": "out/KH0417/FD-2026-1023-KH0417-v1-goc-0.jpg", "co_nhan": false },
+    { "loai": "mo_phong", "goc": "0", "duong_dan": "out/KH0417/FD-2026-1023-KH0417-v1-mo-phong-0.jpg", "co_nhan": true },
+    { "loai": "so_sanh", "goc": "0", "duong_dan": "out/KH0417/FD-2026-1023-KH0417-v1-so-sanh-0.jpg", "co_nhan": true }
+  ],
+  "cong_b": {
+    "trang_thai": "CHUA_RA",
+    "o_truot": [],
+    "ma_loi": [],
+    "ghi_chu_truot": "",
+    "nguoi_kiem_duyet": ""
+  },
+  "ghi_chu_bac_si": "Khách quan tâm gọt hàm, chưa đánh giá được phần rộng đến từ xương hay mô mềm qua ảnh. Đề nghị bác sĩ xác nhận khi khám.",
+  "nguoi_lap": "NV-Design-02"
+}

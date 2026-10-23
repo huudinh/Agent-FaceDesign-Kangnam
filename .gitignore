@@ -1,0 +1,16 @@
+# anh khach hang — du lieu nhan dien ca nhan, KHONG commit du la repo rieng tu
+out/*
+!out/.gitkeep
+in/
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.heic
+
+# khoa API va cau hinh rieng tung may — KHONG commit
+.env
+*.local.json
+
+__pycache__/
+*.pyc
